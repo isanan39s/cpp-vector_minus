@@ -1,3 +1,4 @@
 *.pdb
 *.ilk
 *.obj
+/.vs/cpp-vector_minus

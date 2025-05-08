@@ -1,4 +1,17 @@
-#include <concepts>  /// for std::movable, std::copyable
+/// @file vector_minus.hpp
+/// @brief vector_minus - std::vector に負のインデックスアクセスを加えたラッパー
+/// @author
+/// @license
+/// @details
+///  - 負のインデックス（Python風）に対応した `.raw_at()`
+///  - 明示的に `at()` や `operator[]` は提供しない
+///  - 他の vector の機能は必要最小限で forward
+///  - `todo:` コメントはユーザーが拡張予定のままに保持
+
+#pragma once
+
+#include <concepts>
+#include <stdexcept>
 #include <vector>
 
 template <typename T>
@@ -44,6 +57,7 @@ class vector_minus {
   {
     return vec_.front();
   }
+
   const T& front() const
     requires(!std::is_empty_v<T>)
   {
@@ -55,6 +69,7 @@ class vector_minus {
   {
     return vec_.back();
   }
+
   const T& back() const
     requires(!std::is_empty_v<T>)
   {
@@ -81,6 +96,7 @@ class vector_minus {
     vec_.swap(other.vec_);
   }
 
+  /// 生の at() ラッパー（負インデックスに対応）
   T& raw_at(int index) {
     std::size_t sz = vec_.size();
     if (index < 0) {
