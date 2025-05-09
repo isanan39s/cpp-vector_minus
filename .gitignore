@@ -2,3 +2,5 @@
 *.ilk
 *.obj
 /.vs/cpp-vector_minus
+.vscode
+main.exe
