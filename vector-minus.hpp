@@ -91,7 +91,7 @@ class vector_minus : private std::vector<T, Alloc> {
 	using crend;
 
 	using data;
-	
+
 
 
 
@@ -186,5 +186,12 @@ class vector_minus : private std::vector<T, Alloc> {
 	return this->at(index);
   }
 
-  const T& at(int pos) const {}
+  const T& at(int pos) const {
+
+  }
+
 };
+///https://chatgpt.com/share/681d9d23-6f90-8005-b981-308b049692dd
+
+0-0
+
