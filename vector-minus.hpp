@@ -58,9 +58,43 @@ class vector_minus : private std::vector<T, Alloc> {
 	using typename const_revers_iterator;
 
 	using vec_;
+
 	using push_back;
 	using pop_back;
-	using 
+	///+-気を付けないといけなそう
+
+	using size;
+	using empty;
+	using clear;
+
+	///ちょっと扱いずらそう
+	using resize;
+	using capacity;
+	using front;
+	using back;
+	using reserve;
+	using swap;
+
+///いてれーた
+
+	using begin;
+	using end;
+
+	///constなbegin cbegin
+	using cbegin;
+	using cend;
+	///逆順
+	using rbegin;
+	using rend;
+
+	using crbegin;
+	using crend;
+
+	using data;
+	
+
+
+
 
 
 
@@ -146,7 +180,11 @@ class vector_minus : private std::vector<T, Alloc> {
 
   /// 明示的に at や operator[] は除外！
 
-  T& at(std::size_t pos) {}
+  T& at(int pos) {
 
-  const T& at(std::size_t pos) const {}
+	size_t index=0;
+	return this->at(index);
+  }
+
+  const T& at(int pos) const {}
 };
