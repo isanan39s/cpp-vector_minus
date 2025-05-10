@@ -21,5 +21,8 @@
     <ClCompile Include="vector-minus.hpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="minus_test.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
