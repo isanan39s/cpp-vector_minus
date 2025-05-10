@@ -42,61 +42,42 @@ class vector_minus : private std::vector<T, Alloc> {
   //
   ///// todo:push_frontとか
   // void reserve(int n) { vec_.reserve(n); }  /// 領域確保 todo::マイナス対応
-	using namespace vec_;
 
-  	using typename value_type;
-  	using typename allocator_type;
-  	using typename size_type;
-  	using typename difference_type;
-  	using typename reference;
-  	using typename const_reference;
-	using typename pointer;
-	using typename const_pointer;
-  	using typename iterator;
-	using typename const_iterator;
-	using typename revers_iterator;
-	using typename const_revers_iterator;
+/// 型エイリアス
+using value_type = typename vec_::value_type;
+using allocator_type = typename vec_::allocator_type;
+using size_type = typename vec_::size_type;
+using difference_type = typename vec_::difference_type;
+using reference = typename vec_::reference;
+using const_reference = typename vec_::const_reference;
+using pointer = typename vec_::pointer;
+using const_pointer = typename vec_::const_pointer;
+using iterator = typename vec_::iterator;
+using const_iterator = typename vec_::const_iterator;
+using reverse_iterator = typename vec_::reverse_iterator;
+using const_reverse_iterator = typename vec_::const_reverse_iterator;
 
-	using vec_;
-
-	using push_back;
-	using pop_back;
-	///+-気を付けないといけなそう
-
-	using size;
-	using empty;
-	using clear;
-
-	///ちょっと扱いずらそう
-	using resize;
-	using capacity;
-	using front;
-	using back;
-	using reserve;
-	using swap;
-
-///いてれーた
-
-	using begin;
-	using end;
-
-	///constなbegin cbegin
-	using cbegin;
-	using cend;
-	///逆順
-	using rbegin;
-	using rend;
-
-	using crbegin;
-	using crend;
-
-	using data;
-
-
-
-
-
-
+/// メンバ関数
+using vec_::begin;
+using vec_::end;
+using vec_::cbegin;
+using vec_::cend;
+using vec_::rbegin;
+using vec_::rend;
+using vec_::crbegin;
+using vec_::crend;
+using vec_::data;
+using vec_::size;
+using vec_::empty;
+using vec_::clear;
+using vec_::resize;
+using vec_::capacity;
+using vec_::reserve;
+using vec_::swap;
+using vec_::front;
+using vec_::back;
+using vec_::push_back;
+using vec_::pop_back;
 
 
 
@@ -183,15 +164,107 @@ class vector_minus : private std::vector<T, Alloc> {
   T& at(int pos) {
 
 	size_t index=0;
+
+	index=abs(pos)*2;
+	if (pos<0)
+	{
+		/* code */
+		index--;
+	}
+
 	return this->at(index);
   }
 
   const T& at(int pos) const {
 
+
+	size_t index=0;
+
+	index=abs(pos)*2;
+	if (pos<0)
+	{
+		/* code */
+		index--;
+	}
+
+	return vec_.at(index);
+
   }
+
+
+  T& operator[](int poz){
+
+
+	  size_t index=0;
+
+	  index=abs(poz)*2;
+	  if (poz<0)
+	  {
+		  /* code */
+			index--;
+		}
+
+		return vec_[index];
+
+	}
+
+	const T& operator[](int poz)const{
+
+
+		size_t index=0;
+
+		index=abs(poz)*2;
+		if (poz<0)
+		{
+			/* code */
+			  index--;
+		  }
+
+		  return vec_[index];
+
+	  }
 
 };
 ///https://chatgpt.com/share/681d9d23-6f90-8005-b981-308b049692dd
 
-0-0
+//0 0
 
+
+/*
+
+
+添え字？を偶数を正奇数を負として扱ったらどうにかなる？
+
+
+ChatGPT:
+ほう、それは非常に洒脱な発想ですね！
+つまり、インデックスを「偶数なら正」「奇数なら負」として解釈し、1本のstd::vectorに対して正負両方のインデックスをシンプルに表現したい、ということですね。
+
+これはアイディアとしてはなかなか面白く、次のような解釈の転換になります：
+
+添え字 i	論理インデックス
+0	+0
+1	-0
+2	+1
+3	-1
+4	+2
+5	-2
+...	...
+
+しかし、0の扱いをどうするかで意味が変わります。上記の表だと0/1はちょっと混乱しそうなので、例えば：
+
+添え字 i	論理インデックス
+0	0
+1	-1
+2	+1
+3	-2
+4	+2
+5	-3
+6	+3
+
+こういう風にすると、偶数インデックスは +(i/2), 奇数インデックスは -(i+1)/2 に対応できます。
+
+
+
+
+*/
