@@ -18,7 +18,7 @@
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="vector-minus.hpp">
+    <ClCompile Include="vector_minus.hpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="minus_test.cpp">

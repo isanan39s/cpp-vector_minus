@@ -136,26 +136,26 @@ using vec_::pop_back;
 	  /// 生の at() ラッパー（負インデックスに対応）
 	  T&
 	  raw_at(int index) {
-	std::size_t sz = vec_.size();
+	std::size_t sz = this->size();
 	if (index < 0) {
 	  if (static_cast<std::size_t>(-index) > sz)
 		throw std::out_of_range(
 			"vector_minus::raw_at: negative index out of range");
-	  return vec_.at(sz + index);
+	  return this->at(sz + index);
 	} else {
-	  return vec_.at(static_cast<std::size_t>(index));
+	  return this->at(static_cast<std::size_t>(index));
 	}
   }
 
   const T& raw_at(int index) const {
-	std::size_t sz = vec_.size();
+	std::size_t sz = this->size();
 	if (index < 0) {
 		if (static_cast<std::size_t>(-index) > sz)
 			throw std::out_of_range(
 				"vector_minus::raw_at: negative index out of range");
-	  		return vec_.at(sz + index);
+	  		return this->at(sz + index);
 		} else {
-	  		return vec_.at(static_cast<std::size_t>(index));
+	  		return this->at(static_cast<std::size_t>(index));
 		}
   	}
 
@@ -187,7 +187,7 @@ using vec_::pop_back;
 		index--;
 	}
 
-	return vec_.at(index);
+	return this->at(index);
 
   }
 
@@ -204,8 +204,7 @@ using vec_::pop_back;
 			index--;
 		}
 
-		return vec_[index];
-
+	  return this-> operator[](index);
 	}
 
 	const T& operator[](int poz)const{
@@ -220,7 +219,7 @@ using vec_::pop_back;
 			  index--;
 		  }
 
-		  return vec_[index];
+		  return this-> operator[](index);
 
 	  }
 

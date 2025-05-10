@@ -6,15 +6,17 @@ int main() {
 
     // 値を追加（0〜9）
     for (int i = 0; i < 10; ++i) {
+		std::cout << "push_back: " << i * 10 << '\n';
         v.push_back(i * 10);  // 0, 10, 20, ..., 90
     }
 
-    std::cout << "正インデックスによるアクセス:\n";
+    std::cout << "+Accsess\n";
     for (int i = 0; i < 5; ++i) {
+		std::cout << "gsjgs" << i << '\n';
         std::cout << "v[" << i << "] = " << v[i] << '\n';
     }
 
-    std::cout << "\n負インデックスによるアクセス:\n";
+    std::cout << "\n-Accsess\n";
     for (int i = -1; i >= -5; --i) {
         std::cout << "v[" << i << "] = " << v[i] << '\n';
     }

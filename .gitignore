@@ -4,3 +4,5 @@
 /.vs/cpp-vector_minus
 .vscode
 main.exe
+/cpp-vector_minus/x64/Debug
+/x64/Debug
