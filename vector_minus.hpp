@@ -162,66 +162,29 @@ using vec_::pop_back;
   /// 明示的に at や operator[] は除外！
 
   T& at(int pos) {
-
-	size_t index=0;
-
-	index=abs(pos)*2;
-	if (pos<0)
-	{
-		/* code */
-		index--;
-	}
-
-	return this->at(index);
+	  size_t index = std::abs(pos) * 2;
+	  if (pos < 0) index--;
+	  return std::vector<T, Alloc>::at(index);
   }
 
   const T& at(int pos) const {
-
-
-	size_t index=0;
-
-	index=abs(pos)*2;
-	if (pos<0)
-	{
-		/* code */
-		index--;
-	}
-
-	return this->at(index);
-
+	  size_t index = std::abs(pos) * 2;
+	  if (pos < 0) index--;
+	  return std::vector<T, Alloc>::at(index);
   }
 
 
-  T& operator[](int poz){
+  T& operator[](int poz) {
+	  size_t index = std::abs(poz) * 2;
+	  if (poz < 0) index--;
+	  return std::vector<T, Alloc>::operator[](index);  /// 明示的にベースクラスを呼ぶ
+  }
 
-
-	  size_t index=0;
-
-	  index=abs(poz)*2;
-	  if (poz<0)
-	  {
-		  /* code */
-			index--;
-		}
-
-	  return this-> operator[](index);
-	}
-
-	const T& operator[](int poz)const{
-
-
-		size_t index=0;
-
-		index=abs(poz)*2;
-		if (poz<0)
-		{
-			/* code */
-			  index--;
-		  }
-
-		  return this-> operator[](index);
-
-	  }
+  const T& operator[](int poz) const {
+	  size_t index = std::abs(poz) * 2;
+	  if (poz < 0) index--;
+	  return std::vector<T, Alloc>::operator[](index);
+  }
 
 };
 ///https://chatgpt.com/share/681d9d23-6f90-8005-b981-308b049692dd
